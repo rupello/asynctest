@@ -3,7 +3,9 @@ import asyncio
 import time
 import toga
 from toga.style import Pack
-from toga.style.pack import COLUMN, ROW
+from toga.style.pack import COLUMN
+
+from download import test_download
 
 class DownloadGuiApp(toga.App):
     def __init__(self):
@@ -36,7 +38,7 @@ class DownloadGuiApp(toga.App):
         self._start_button.enabled = False
         self.log("> starting test")
         t1 = time.time()
-        await asyncio.sleep(3)
+        await test_download( url = 'http://ipv4.download.thinkbroadband.com/200MB.zip')
         t2 = time.time()
         self.log(f"> test complete in {t2-t1:.2f}s")
         self._start_button.enabled = True
